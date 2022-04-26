@@ -3,7 +3,7 @@ package net.xdclass.online.utils;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import net.xdclass.online.model.User;
+import net.xdclass.online.model.entity.User;
 
 import java.util.Date;
 

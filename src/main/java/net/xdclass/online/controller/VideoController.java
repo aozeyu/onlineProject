@@ -1,7 +1,7 @@
 package net.xdclass.online.controller;
 
-import net.xdclass.online.model.Video;
-import net.xdclass.online.model.VideoBanner;
+import net.xdclass.online.model.entity.Video;
+import net.xdclass.online.model.entity.VideoBanner;
 import net.xdclass.online.service.VideoService;
 import net.xdclass.online.utils.JsonData;
 import org.springframework.beans.factory.annotation.Autowired;

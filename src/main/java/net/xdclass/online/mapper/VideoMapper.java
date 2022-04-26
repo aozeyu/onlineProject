@@ -1,7 +1,7 @@
 package net.xdclass.online.mapper;
 
-import net.xdclass.online.model.Video;
-import net.xdclass.online.model.VideoBanner;
+import net.xdclass.online.model.entity.Video;
+import net.xdclass.online.model.entity.VideoBanner;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

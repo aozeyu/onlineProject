@@ -1,6 +1,6 @@
 package net.xdclass.online.service.impl;
 
-import net.xdclass.online.model.User;
+import net.xdclass.online.model.entity.User;
 import net.xdclass.online.mapper.UserMapper;
 import net.xdclass.online.service.UserService;
 import net.xdclass.online.utils.CommonUtils;
