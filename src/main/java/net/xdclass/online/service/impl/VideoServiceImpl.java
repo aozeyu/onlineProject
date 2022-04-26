@@ -1,7 +1,7 @@
 package net.xdclass.online.service.impl;
 
-import net.xdclass.online.domain.Video;
-import net.xdclass.online.domain.VideoBanner;
+import net.xdclass.online.model.Video;
+import net.xdclass.online.model.VideoBanner;
 import net.xdclass.online.mapper.VideoMapper;
 import net.xdclass.online.service.VideoService;
 import org.apache.ibatis.annotations.Param;

@@ -1,8 +1,5 @@
 package net.xdclass.online.service;
 
-import net.xdclass.online.domain.User;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.Map;
 
 /**

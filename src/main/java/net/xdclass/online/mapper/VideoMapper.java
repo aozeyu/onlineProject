@@ -1,9 +1,8 @@
 package net.xdclass.online.mapper;
 
-import net.xdclass.online.domain.Video;
-import net.xdclass.online.domain.VideoBanner;
+import net.xdclass.online.model.Video;
+import net.xdclass.online.model.VideoBanner;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 

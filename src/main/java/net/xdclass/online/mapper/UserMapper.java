@@ -1,6 +1,6 @@
 package net.xdclass.online.mapper;
 
-import net.xdclass.online.domain.User;
+import net.xdclass.online.model.User;
 import org.apache.ibatis.annotations.Param;
 
 /**
