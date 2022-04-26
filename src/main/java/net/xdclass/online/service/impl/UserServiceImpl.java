@@ -33,6 +33,12 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    @Override
+    public String findByPhoneAndPwd(String phone, String pwd) {
+        User user = userMapper.findByPhoneAndPwd(phone,CommonUtils.MD5(pwd));
+        return null;
+    }
+
     private User parseToUser(Map<String, String> userInfo) {
         if (userInfo.containsKey("phone") && userInfo.containsKey("pwd") && userInfo.containsKey("name")) {
             User user = new User();
