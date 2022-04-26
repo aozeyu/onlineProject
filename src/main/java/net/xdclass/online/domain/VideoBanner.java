@@ -10,28 +10,17 @@ import java.util.Date;
  * @date: 2022-04-26 12:16
  **/
 public class VideoBanner {
-    private int id;
+    private Integer id;
     private String url;
     private String img;
     private Date createTime;
-    private int weight;
+    private Integer weight;
 
-    @Override
-    public String toString() {
-        return "VideoBanner{" +
-                "id=" + id +
-                ", url='" + url + '\'' +
-                ", img='" + img + '\'' +
-                ", createTime=" + createTime +
-                ", weight=" + weight +
-                '}';
-    }
-
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -47,6 +36,17 @@ public class VideoBanner {
         return img;
     }
 
+    @Override
+    public String toString() {
+        return "VideoBanner{" +
+                "id=" + id +
+                ", url='" + url + '\'' +
+                ", img='" + img + '\'' +
+                ", createTime=" + createTime +
+                ", weight=" + weight +
+                '}';
+    }
+
     public void setImg(String img) {
         this.img = img;
     }
@@ -59,11 +59,11 @@ public class VideoBanner {
         this.createTime = createTime;
     }
 
-    public int getWeight() {
+    public Integer getWeight() {
         return weight;
     }
 
-    public void setWeight(int weight) {
+    public void setWeight(Integer weight) {
         this.weight = weight;
     }
 }
