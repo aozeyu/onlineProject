@@ -2,6 +2,8 @@ package net.xdclass.online.mapper;
 
 import net.xdclass.online.domain.Video;
 import net.xdclass.online.domain.VideoBanner;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -19,5 +21,5 @@ public interface VideoMapper {
 
 
     /*查询视频详情接口开发*/
-    Video findDetailById(int videoId);
+    Video findDetailById(@Param("video_id") int videoId);
 }

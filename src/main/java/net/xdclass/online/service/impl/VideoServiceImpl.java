@@ -4,6 +4,7 @@ import net.xdclass.online.domain.Video;
 import net.xdclass.online.domain.VideoBanner;
 import net.xdclass.online.mapper.VideoMapper;
 import net.xdclass.online.service.VideoService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,10 +32,9 @@ public class VideoServiceImpl implements VideoService {
     }
 
     @Override
-    public Video findDetailById(int videoId) {
-        //业务逻辑
-        Video video = videoMapper.findDetailById(videoId);
-        return video;
+    public Video findDetailById(@Param("video_id") int videoId) {
+        return videoMapper.findDetailById(videoId);
     }
+
 
 }

@@ -15,8 +15,17 @@ public class Chapter {
     private Integer videoId;
     private String title;
     private Integer ordered;
+
+    private Date createTime;
     private List<Episode> episodeList;
-    private Date create_time;
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
 
     public List<Episode> getEpisodeList() {
         return episodeList;
@@ -33,7 +42,8 @@ public class Chapter {
                 ", videoId=" + videoId +
                 ", title='" + title + '\'' +
                 ", ordered=" + ordered +
-                ", create_time=" + create_time +
+                ", createTime=" + createTime +
+                ", episodeList=" + episodeList +
                 '}';
     }
 
@@ -67,13 +77,5 @@ public class Chapter {
 
     public void setOrdered(Integer ordered) {
         this.ordered = ordered;
-    }
-
-    public Date getCreate_time() {
-        return create_time;
-    }
-
-    public void setCreate_time(Date create_time) {
-        this.create_time = create_time;
     }
 }

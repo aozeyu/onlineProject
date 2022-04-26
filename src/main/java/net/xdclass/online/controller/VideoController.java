@@ -40,6 +40,7 @@ public class VideoController {
     /*
      * 视频详情*/
     @GetMapping("find_detail_by_id")
+    @CrossOrigin
     public JsonData findDetailById(@RequestParam(value = "video_id", required = true) int videoId) {
         Video video = videoService.findDetailById(videoId);
         return JsonData.buildSuccess(video);
