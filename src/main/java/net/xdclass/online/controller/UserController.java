@@ -29,6 +29,7 @@ public class UserController {
     }
 
     @PostMapping("login")
+    @CrossOrigin
     public JsonData login(@RequestBody LoginRequest loginRequest) {
         String token = userService.findByPhoneAndPwd(loginRequest.getPhone(), loginRequest.getPwd());
         return token == null ? JsonData.buildError("登陆失败,账号密码错误") : JsonData.buildSuccess(token);
