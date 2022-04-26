@@ -1,6 +1,7 @@
 package net.xdclass.online.service;
 
 import net.xdclass.online.domain.Video;
+import net.xdclass.online.domain.VideoBanner;
 
 import java.util.List;
 
@@ -13,4 +14,8 @@ import java.util.List;
  **/
 public interface VideoService {
     List<Video> listVideo();
+
+    List<VideoBanner> listVideoBanner();
+
+    Video findDetailById(int videoId);
 }

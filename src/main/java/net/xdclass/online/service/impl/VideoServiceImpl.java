@@ -1,6 +1,7 @@
 package net.xdclass.online.service.impl;
 
 import net.xdclass.online.domain.Video;
+import net.xdclass.online.domain.VideoBanner;
 import net.xdclass.online.mapper.VideoMapper;
 import net.xdclass.online.service.VideoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,4 +24,17 @@ public class VideoServiceImpl implements VideoService {
     public List<Video> listVideo() {
         return videoMapper.listVideo();
     }
+
+    @Override
+    public List<VideoBanner> listVideoBanner() {
+        return videoMapper.listVideoBanner();
+    }
+
+    @Override
+    public Video findDetailById(int videoId) {
+        //业务逻辑
+        Video video = videoMapper.findDetailById(videoId);
+        return video;
+    }
+
 }

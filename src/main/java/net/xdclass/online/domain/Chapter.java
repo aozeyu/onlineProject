@@ -1,6 +1,7 @@
 package net.xdclass.online.domain;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @program: online
@@ -14,7 +15,16 @@ public class Chapter {
     private Integer videoId;
     private String title;
     private Integer ordered;
+    private List<Episode> episodeList;
     private Date create_time;
+
+    public List<Episode> getEpisodeList() {
+        return episodeList;
+    }
+
+    public void setEpisodeList(List<Episode> episodeList) {
+        this.episodeList = episodeList;
+    }
 
     @Override
     public String toString() {

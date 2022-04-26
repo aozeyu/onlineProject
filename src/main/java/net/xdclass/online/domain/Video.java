@@ -1,6 +1,7 @@
 package net.xdclass.online.domain;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @program: online
@@ -16,11 +17,20 @@ public class Video {
     private String summary;
     private String coverImg;
     private Integer price;
+    private List<Chapter> chapterList;
     private Date createTime;
     private Double point;
 
     public Integer getId() {
         return id;
+    }
+
+    public List<Chapter> getChapterList() {
+        return chapterList;
+    }
+
+    public void setChapterList(List<Chapter> chapterList) {
+        this.chapterList = chapterList;
     }
 
     @Override
