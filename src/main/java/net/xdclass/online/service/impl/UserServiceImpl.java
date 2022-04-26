@@ -4,6 +4,7 @@ import net.xdclass.online.model.entity.User;
 import net.xdclass.online.mapper.UserMapper;
 import net.xdclass.online.service.UserService;
 import net.xdclass.online.utils.CommonUtils;
+import net.xdclass.online.utils.JWTUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,7 +37,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public String findByPhoneAndPwd(String phone, String pwd) {
         User user = userMapper.findByPhoneAndPwd(phone,CommonUtils.MD5(pwd));
-        return null;
+        if (user == null) {
+            return null;
+        }else {
+            String  token = JWTUtils.geneJsonWebToken(user);
+            return token;
+        }
     }
 
     private User parseToUser(Map<String, String> userInfo) {

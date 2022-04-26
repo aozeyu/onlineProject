@@ -21,7 +21,7 @@ public class JWTUtils {
     private static final String TOKEN_PREFIX = "xdclass";
     private static final String SUBJECT = "xdclass";
 
-    private static String geneJsonWebToken(User user) {
+    public static String geneJsonWebToken(User user) {
         String token = Jwts.builder().setSubject(SUBJECT).claim("head_img", user.getHeadImg()).claim("id", user.getId()).claim("name", user.getName()).setIssuedAt(new Date()).setExpiration(new Date(System.currentTimeMillis() + EXPIRE)).signWith(SignatureAlgorithm.HS256, SECRET).compact();
         token = TOKEN_PREFIX + token;
         return token;
