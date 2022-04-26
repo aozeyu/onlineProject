@@ -3,6 +3,7 @@ package net.xdclass.online.service.impl;
 import net.xdclass.online.domain.User;
 import net.xdclass.online.mapper.UserMapper;
 import net.xdclass.online.service.UserService;
+import net.xdclass.online.utils.CommonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,7 +41,7 @@ public class UserServiceImpl implements UserService {
             user.setPhone(userInfo.get("phone"));
             String pwd = userInfo.get("pwd");
             //MD5加密处理
-            user.setPwd(pwd);
+            user.setPwd(CommonUtils.MD5(pwd));
             return user;
         } else {
             return null;
