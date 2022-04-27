@@ -1,5 +1,7 @@
 package net.xdclass.online.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 /**
@@ -18,6 +20,7 @@ public class Episode {
     private Integer chapterId;
     private Integer free;
     private Integer videoId;
+    @JsonFormat(pattern = "yyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date createTime;
 
     @Override

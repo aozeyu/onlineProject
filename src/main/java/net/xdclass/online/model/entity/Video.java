@@ -1,5 +1,8 @@
 package net.xdclass.online.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Date;
 import java.util.List;
 
@@ -18,6 +21,7 @@ public class Video {
     private String coverImg;
     private Integer price;
     private List<Chapter> chapterList;
+    @JsonFormat(pattern = "yyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date createTime;
     private Double point;
 
