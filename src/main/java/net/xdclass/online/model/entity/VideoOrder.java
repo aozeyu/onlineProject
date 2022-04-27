@@ -20,16 +20,12 @@ public class VideoOrder {
     private Integer userId;
     private Integer state;
 
-    public Integer getState() {
-        return state;
+    public Integer getId() {
+        return id;
     }
 
     public void setState(Integer state) {
         this.state = state;
-    }
-
-    public Integer getId() {
-        return id;
     }
 
     public void setId(Integer id) {
@@ -60,6 +56,10 @@ public class VideoOrder {
 
     public Date getCreateTime() {
         return createTime;
+    }
+
+    public Integer getState() {
+        return state;
     }
 
     public void setCreateTime(Date createTime) {

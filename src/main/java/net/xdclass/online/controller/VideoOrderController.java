@@ -26,8 +26,12 @@ public class VideoOrderController {
     @PostMapping("save")
     @CrossOrigin
     public JsonData saveOrder(@RequestBody VideoOrderRequest videoOrderRequest, HttpServletRequest request) {
+
         Integer userId = (Integer) request.getAttribute("user_id");
+
+
         int rows = videoOrderService.save(userId, videoOrderRequest.getVideoId());
+
         return rows == 0 ? JsonData.buildError("下单失败") : JsonData.buildSuccess();
     }
 
