@@ -1,5 +1,6 @@
 package net.xdclass.online.config;
 
+import net.xdclass.online.interceptor.CorsInterceptor;
 import net.xdclass.online.interceptor.LoginInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,9 +20,10 @@ public class InterceptorConfig implements WebMvcConfigurer {
     LoginInterceptor loginInterceptor() {
         return new LoginInterceptor();
     }
-
+    CorsInterceptor corsInterceptor() {return  new CorsInterceptor();}
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(corsInterceptor()).addPathPatterns("/**");
         registry.addInterceptor(loginInterceptor()).addPathPatterns("/api/v1/pri/*/*/**").excludePathPatterns("/api/v1/pri/user/login", "/api/v1/pri/user/register");
         WebMvcConfigurer.super.addInterceptors(registry);
     }

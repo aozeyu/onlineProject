@@ -4,6 +4,7 @@ import net.xdclass.online.model.entity.Video;
 import net.xdclass.online.model.entity.VideoBanner;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 /**
  * @program: online
@@ -15,7 +16,7 @@ import java.util.List;
 public interface VideoService {
     List<Video> listVideo();
 
-    List<VideoBanner> listVideoBanner();
+    List<VideoBanner> listVideoBanner() throws ExecutionException;
 
     Video findDetailById(int videoId);
 }

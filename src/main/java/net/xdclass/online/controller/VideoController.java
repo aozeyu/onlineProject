@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 /**
  * @program: online
@@ -24,7 +25,7 @@ public class VideoController {
 
     @GetMapping("list_banner")
     @CrossOrigin
-    public JsonData indexBanner() {
+    public JsonData indexBanner() throws ExecutionException {
         List<VideoBanner> bannerList = videoService.listVideoBanner();
         return JsonData.buildSuccess(bannerList);
     }
