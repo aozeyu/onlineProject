@@ -1,8 +1,8 @@
 package net.xdclass.online.service.impl;
 
-import net.xdclass.online.mapper.UserMapper;
-import net.xdclass.online.mapper.VideoMapper;
-import net.xdclass.online.mapper.VideoOrderMapper;
+import net.xdclass.online.mapper.*;
+import net.xdclass.online.model.entity.Episode;
+import net.xdclass.online.model.entity.PlayRecord;
 import net.xdclass.online.model.entity.Video;
 import net.xdclass.online.model.entity.VideoOrder;
 import net.xdclass.online.service.VideoOrderService;
@@ -25,6 +25,10 @@ public class VideoOrderServiceIml implements VideoOrderService {
     private VideoOrderMapper videoOrderMapper;
     @Autowired
     private VideoMapper videoMapper;
+    @Autowired
+    private EpisodeMapper episodeMapper;
+    @Autowired
+    private PlayRecordMapper playRecordMapper;
 
     @Override
     public int save(int userId, int videoId) {
@@ -42,6 +46,18 @@ public class VideoOrderServiceIml implements VideoOrderService {
         newVideoOrder.setVideoId(videoId);
         newVideoOrder.setVideoImg(video.getCoverImg());
         newVideoOrder.setVideoTitle(video.getTitle());
-        return videoOrderMapper.saveOrder(newVideoOrder);
+        int rows = videoOrderMapper.saveOrder(newVideoOrder);
+        /*
+         * 生成播放记录*/
+        if (rows == 1) {
+            Episode episode = episodeMapper.findFirstEpisodeByVideoId(videoId);
+            PlayRecord playRecord = new PlayRecord();
+            playRecord.setCreateTime(new Date());
+            playRecord.setEpisodeId(episode.getId());
+            playRecord.setUserId(userId);
+            playRecord.setVideoId(videoId);
+            playRecordMapper.saveRecord(playRecord);
+        }
+        return rows;
     }
 }
