@@ -1,5 +1,8 @@
 package net.xdclass.online.mapper;
 
+import net.xdclass.online.model.entity.VideoOrder;
+import org.apache.ibatis.annotations.Param;
+
 /**
  * @program: online
  * @description: 222
@@ -8,4 +11,8 @@ package net.xdclass.online.mapper;
  * @date: 2022-04-27 13:49
  **/
 public interface VideoOrderMapper {
+
+    VideoOrder findByUserIdAndVideoIdAndState(@Param("user_id") int userId, @Param("video_id") int videoId, @Param("state") int state);
+
+    int saveOrder(VideoOrder videoOrder);
 }
