@@ -9,6 +9,9 @@ import net.xdclass.online.service.VideoOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+import java.util.UUID;
+
 /**
  * @program: online
  * @description: 222
@@ -30,6 +33,15 @@ public class VideoOrderServiceIml implements VideoOrderService {
             return 0;
         }
         Video video = videoMapper.findById(videoId);
-        return 0;
+        VideoOrder newVideoOrder = new VideoOrder();
+        newVideoOrder.setCreateTime(new Date());
+        newVideoOrder.setOutTradeNo(UUID.randomUUID().toString());
+        newVideoOrder.setState(1);
+        newVideoOrder.setTotalFee(video.getPrice());
+        newVideoOrder.setUserId(userId);
+        newVideoOrder.setVideoId(videoId);
+        newVideoOrder.setVideoImg(video.getCoverImg());
+        newVideoOrder.setVideoTitle(video.getTitle());
+        return videoOrderMapper.saveOrder(newVideoOrder);
     }
 }
