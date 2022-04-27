@@ -18,4 +18,9 @@
         where phone = #{phone}
           and pwd = #{pwd}
     </select>
+    <select id="findByUserId" resultType="User">
+        select *
+        from user
+        where id = #{user_id}
+    </select>
 </mapper>

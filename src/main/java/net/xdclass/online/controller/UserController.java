@@ -1,11 +1,13 @@
 package net.xdclass.online.controller;
 
+import net.xdclass.online.model.entity.User;
 import net.xdclass.online.model.request.LoginRequest;
 import net.xdclass.online.service.UserService;
 import net.xdclass.online.utils.JsonData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 /**
@@ -33,5 +35,16 @@ public class UserController {
     public JsonData login(@RequestBody LoginRequest loginRequest) {
         String token = userService.findByPhoneAndPwd(loginRequest.getPhone(), loginRequest.getPwd());
         return token == null ? JsonData.buildError("登陆失败,账号密码错误") : JsonData.buildSuccess(token);
+    }
+
+    @GetMapping("find_by_token")
+    @CrossOrigin
+    public JsonData findUserInfoByToken(HttpServletRequest request) {
+        Integer userId = (Integer) request.getAttribute("user_id");
+        if (userId == null) {
+            return JsonData.buildError("查询失败");
+        }
+        User user = userService.findByUserId(userId);
+        return JsonData.buildSuccess(user);
     }
 }

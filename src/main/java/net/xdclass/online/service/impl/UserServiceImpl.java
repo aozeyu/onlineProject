@@ -36,13 +36,20 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String findByPhoneAndPwd(String phone, String pwd) {
-        User user = userMapper.findByPhoneAndPwd(phone,CommonUtils.MD5(pwd));
+        User user = userMapper.findByPhoneAndPwd(phone, CommonUtils.MD5(pwd));
         if (user == null) {
             return null;
-        }else {
-            String  token = JWTUtils.geneJsonWebToken(user);
+        } else {
+            String token = JWTUtils.geneJsonWebToken(user);
             return token;
         }
+    }
+
+    @Override
+    public User findByUserId(Integer userId) {
+        User user = userMapper.findByUserId(userId);
+        user.setPwd("");
+        return user;
     }
 
     private User parseToUser(Map<String, String> userInfo) {
@@ -60,13 +67,15 @@ public class UserServiceImpl implements UserService {
             return null;
         }
     }
-    private static final String [] headImg = {
+
+    private static final String[] headImg = {
             "https://xd-video-pc-img.oss-cn-beijing.aliyuncs.com/xdclass_pro/default/head_img/12.jpeg",
             "https://xd-video-pc-img.oss-cn-beijing.aliyuncs.com/xdclass_pro/default/head_img/11.jpeg",
             "https://xd-video-pc-img.oss-cn-beijing.aliyuncs.com/xdclass_pro/default/head_img/13.jpeg",
             "https://xd-video-pc-img.oss-cn-beijing.aliyuncs.com/xdclass_pro/default/head_img/14.jpeg",
             "https://xd-video-pc-img.oss-cn-beijing.aliyuncs.com/xdclass_pro/default/head_img/15.jpeg"
     };
+
     private String getRandomImg() {
         int size = headImg.length;
         Random random = new Random();
