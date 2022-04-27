@@ -1,5 +1,9 @@
 package net.xdclass.online.service;
 
+import net.xdclass.online.model.entity.VideoOrder;
+
+import java.util.List;
+
 /**
  * @program: online
  * @description: 222
@@ -9,4 +13,6 @@ package net.xdclass.online.service;
  **/
 public interface VideoOrderService {
     int save(int userId,int videoId);
+
+    List<VideoOrder> listOrderByUserId(Integer userId);
 }

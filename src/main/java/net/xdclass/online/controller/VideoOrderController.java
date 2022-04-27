@@ -1,15 +1,14 @@
 package net.xdclass.online.controller;
 
+import net.xdclass.online.model.entity.VideoOrder;
 import net.xdclass.online.model.request.VideoOrderRequest;
 import net.xdclass.online.service.VideoOrderService;
 import net.xdclass.online.utils.JsonData;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * @program: online
@@ -23,11 +22,19 @@ import javax.servlet.http.HttpServletRequest;
 public class VideoOrderController {
     @Autowired
     private VideoOrderService videoOrderService;
+
+    @GetMapping("save")
     @CrossOrigin
-    @RequestMapping("save")
     public JsonData saveOrder(@RequestBody VideoOrderRequest videoOrderRequest, HttpServletRequest request) {
         Integer userId = (Integer) request.getAttribute("user_id");
         int rows = videoOrderService.save(userId, videoOrderRequest.getVideoId());
         return rows == 0 ? JsonData.buildError("下单失败") : JsonData.buildSuccess();
+    }
+    @GetMapping("list")
+    @CrossOrigin
+    public JsonData listOrder(HttpServletRequest request) {
+        Integer userId = (Integer) request.getAttribute("user_id");
+        List<VideoOrder> videoOrderList = videoOrderService.listOrderByUserId(userId);
+        return JsonData.buildSuccess(videoOrderList);
     }
 }

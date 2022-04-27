@@ -9,8 +9,11 @@ import net.xdclass.online.model.entity.VideoOrder;
 import net.xdclass.online.service.VideoOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -32,6 +35,8 @@ public class VideoOrderServiceIml implements VideoOrderService {
     private PlayRecordMapper playRecordMapper;
 
     @Override
+    @Transactional
+
     public int save(int userId, int videoId) {
         VideoOrder videoOrder = videoOrderMapper.findByUserIdAndVideoIdAndState(userId, videoId, 1);
         if (videoOrder != null) {
@@ -63,5 +68,10 @@ public class VideoOrderServiceIml implements VideoOrderService {
             playRecordMapper.saveRecord(playRecord);
         }
         return rows;
+    }
+
+    @Override
+    public List<VideoOrder> listOrderByUserId(Integer userId) {
+        return videoOrderMapper.listOrderByUserId(userId);
     }
 }
