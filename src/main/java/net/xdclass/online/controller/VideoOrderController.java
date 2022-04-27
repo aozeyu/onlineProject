@@ -4,6 +4,7 @@ import net.xdclass.online.model.request.VideoOrderRequest;
 import net.xdclass.online.service.VideoOrderService;
 import net.xdclass.online.utils.JsonData;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,7 +23,7 @@ import javax.servlet.http.HttpServletRequest;
 public class VideoOrderController {
     @Autowired
     private VideoOrderService videoOrderService;
-
+    @CrossOrigin
     @RequestMapping("save")
     public JsonData saveOrder(@RequestBody VideoOrderRequest videoOrderRequest, HttpServletRequest request) {
         Integer userId = (Integer) request.getAttribute("user_id");

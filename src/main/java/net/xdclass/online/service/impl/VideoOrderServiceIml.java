@@ -1,5 +1,6 @@
 package net.xdclass.online.service.impl;
 
+import net.xdclass.online.exception.XDException;
 import net.xdclass.online.mapper.*;
 import net.xdclass.online.model.entity.Episode;
 import net.xdclass.online.model.entity.PlayRecord;
@@ -51,6 +52,9 @@ public class VideoOrderServiceIml implements VideoOrderService {
          * 生成播放记录*/
         if (rows == 1) {
             Episode episode = episodeMapper.findFirstEpisodeByVideoId(videoId);
+            if (episode == null) {
+                throw new XDException(-1, "视频没有集信息请运营人员检查");
+            }
             PlayRecord playRecord = new PlayRecord();
             playRecord.setCreateTime(new Date());
             playRecord.setEpisodeId(episode.getId());
