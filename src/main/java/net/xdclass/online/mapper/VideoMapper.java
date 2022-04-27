@@ -21,4 +21,6 @@ public interface VideoMapper {
 
     /*查询视频详情接口开发*/
     Video findDetailById(@Param("video_id") int videoId);
+
+    Video findById(@Param("video_id") int videoId);
 }
