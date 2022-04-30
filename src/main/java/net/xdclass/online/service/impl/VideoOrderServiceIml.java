@@ -55,7 +55,7 @@ public class VideoOrderServiceIml implements VideoOrderService {
         int rows = videoOrderMapper.saveOrder(newVideoOrder);
         /*
          * 生成播放记录*/
-        if (rows == 1) {
+        if (rows == 0) {
             Episode episode = episodeMapper.findFirstEpisodeByVideoId(videoId);
             if (episode == null) {
                 throw new XDException(-1, "视频没有集信息请运营人员检查");
